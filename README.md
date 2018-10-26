@@ -1,14 +1,7 @@
-# synergy-DisasterRelief
-Problem : There is no proper coordination and collaboration between agencies working for disaster relief.
+[1]Synergy-DisasterRelief is a web app which will provide useful data required by disaster relief agencies and will also help them identify the regions which require immediate mitigation.
+Users of social media play an important role in the dissemination of emergency and disaster information. Tweets can be analysed and useful data can be extracted from tweets to identify locations affected by the disaster. Also, other information like donations, type of casualties etc., can be extracted from the tweets. The information can be used by agencies to provide relief. 
 
-Solution :
-[1] A webApp which will coordinate and manage the functioning of disaster relief agencies and will also help them identify the regions which require immediate mitigation.
- 
-[2] Crowdsourced data (tweets,user data from the app,media data etc.,) is used to classify disaster hit regions into high impact, medium impact etc., also user requests from the application can be used to specify the required resource (e.g., water, food, shelter etc.,) in the disaster hit zone. Inferences from crowdsourced data is validated by other users of the applications using proof of work concept and a impact map will be generated. This impact map may be used by agencies to provide relief. Multiple agencies should not respond to an individual request at the same time so app will partition the user requests and will assign the request to a particular agency based on area and resource needed.
+[2]In the event of a crisis, a user can send a request for help using the app. They can also specify the resources required by them. If the users are not able to send requests themselves due to connectivity issues, someone from a remote location, their family or friends can send the request. Requests are validated and accessed to generate a impact map for the agencies so that concerned relief agencies may start relief.
 
-[3] In the event of a crisis, a user can send a request for help using the app. They can also specify the resources required by them. If the users are not able to send requests themselves due to connectivity issues, someone from a remote location, their family or friends can send the request. Requests are validated and accessed to generate a impact map for the agencies and concerned agencies may start relief.
-
-[4]Dataset used : Twitter dataset
-
-[5]Technologies used: Django and TensorFlow
+[3]Flask with PostGreSQL is used. sklearn, xgboost is used for classification and extraction of tweets.
 
