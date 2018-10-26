@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Synergy: Disaster Relief</title>
+
+    <script src="{{ url_for('static',filename='js/map.js') }}"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static',filename='css/scrolling-nav.css') }}" rel="stylesheet">
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=Apv2l9wgX2-JuwgKuHx6Y8_1BM-LOksxxRa-6kGfdGWzNx4ZHEyuSyffdo1bOR0P'></script>
+    <style>
+        /* CSS styles used by custom infobox template */
+        .customInfobox {
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            max-width: 200px;
+            border-radius: 10px;
+            padding: 10px;
+            font-size:12px;
+            pointer-events:auto !important;
+        }
+
+            .customInfobox .title {
+                font-size: 14px;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+    </style>
+  </head>
+
+  <body id="page-top" onload='GetMap();'>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/">Synergy: Disaster Relief</a>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/validate">Validate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/request">Request</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header style="background-color: #18bc9c!important" class="bg-primary text-white">
+      <div class="container text-center">
+        <h1>Synergy: Disaster Relief</h1>
+        <p class="lead">A webApp that coordinates and manages the functioning of disaster relief agencies and will also help them identify the regions which require immediate mitigation</p>
+        <p>Prototype is based on dataset of Joplin Tornado</p>
+      </div>
+    </header>
+    <div class="container" style="position: relative;left: 0%">
+        <div id='printoutPanel'></div>
+        <div id='mapDiv' style='width: 70vw; height: 70vh;top:10%;left:10%;'>
+          <p>Map will load here. It will take about 1 minute. Please enable "load unsafe script"</p>
+        </div>
+    </div>
+    <div style="margin-top: 50px;" class="container">
+      <a href="/refreshMap" ><button type="button" class="btn btn-success" >Reset Map</button></a>
+    </div>
+
+    <section style="padding:0px;"id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>How this works?</h2>
+            <p class="lead">A webApp that coordinates and manages the functioning of disaster relief agencies and will also help them identify the regions which require immediate mitigation</p>
+            <ul>
+              <li>We are with you Joplin</li>
+              <li>Tweets and user requests are used to identify the areas affected by Joplin disaster</li>
+              <li>If you are affectced by Joplin tornado, navigate to request page, send us a request and  relief team will get back to you</li>
+              <li>Please help us provide more accurate information to the users -by validating the data obtained by our trained model. Head to validate page and validate the locations which are affected by Joplin as per your knowledge</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="map_details" style="display:none;">
+      <div id="total_locations" value="{{ total_locations }}"></div>
+      {% for location in maps %}
+      <div id="location{{ location.id }}">
+         <div id="latitude{{ location.id }}" value="{{ location.latitude }}"></div>
+         <div id="longitude{{ location.id }}" value="{{ location.longitude }}"></div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Microsoft: Codefundo++ 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{{ url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="{{ url_for('static',filename='js/scrolling-nav.js') }}"></script>
+
+  </body>
+
+</html>
